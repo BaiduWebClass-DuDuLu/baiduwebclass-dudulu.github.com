@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		div{
+			margin:50px 0px 0px 300px;
+		}
+		p{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+    <div>
+		<label>名称</label>
+		<input type="text" onblur="checkname(this)" onfocus="reset(this)"></input>
+		<p>必填，长度为4-16位字符</p>
+	</div>
+	<div>
+		<label>密码</label>
+		<input type="password" onblur="checkpassword(this)" onfocus="reset(this)"></input>
+		<p>必填，长度为4-16位字符,包含字母和数字</p>
+	</div>
+	<div>
+		<label>确认密码</label>
+		<input type="password"></input>
+		<p>必填，必须与密码相同</p>
+	</div>
+	<div>
+		<label>邮箱</label>
+		<input type="text"  onblur="checkNetEase(this)" onfocus="reset(this)"></input>
+		<p>填写正确的邮箱格式</p>
+	</div>
+	<div>
+		<label>手机</label>
+		<input type="text" id="mobile" onblur="checkphone(this)" onfocus="reset(this)"></input>
+		<p>填写正确的手机号码</p>
+	</div>
+	<div>
+		<button id="submit">提交</button>
+	</div>
+	<script type="text/javascript">
+		var pp=document.getElementsByTagName("p");
+		function checkphone(mobileInput){
+			var value = mobileInput.value;
+			if(!/^1\d{10}$/.test(value)){
+				mobileInput.style.borderColor = 'red';
+				pp[4].style.color = 'red';
+				pp[4].style.display = 'block';
+			}
+		}
+
+		function checkNetEase(mobileInput){
+			var value = mobileInput.value;
+			if(!/(.+)@(163|126|188)\.com$/.test(value)){
+				mobileInput.style.borderColor='red';
+				pp[3].style.color = 'red';
+				pp[3].style.display = 'block';
+			}
+		}
+		function checkpassword(mobileInput){
+			var value = mobileInput.value;
+			if(!/^\m{4,16}$/.test(value)){
+				mobileInput.style.borderColor = 'red';
+				pp[1].style.color = 'red';
+				pp[1].style.display = 'block';
+			}
+		}
+		function checkname(mobileInput){
+			var value = mobileInput.value;
+			if(!/^.{4,16}$/.test(value)){
+				mobileInput.style.borderColor = 'red';
+				pp[0].style.color = 'red';
+				pp[0].style.display = 'block';
+			}
+		}
+
+		function reset(mobileInput){
+			mobileInput.style.borderColor = '';
+		}
+	</script>
+</body>
+</html>
